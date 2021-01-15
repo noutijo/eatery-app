@@ -1,0 +1,91 @@
+* {
+    font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    padding: 0;
+    font-weight: 400;
+    color: black;
+}
+
+:root {
+    --main-color: #858ea1;
+    --hover-color: #d0d7e3;
+    --main-border: 1px solid #191c28;
+    --main-bg: #da2a32;
+    --base-bg: #1e2331;
+    --light-bg: #242a3b;
+    --accent: #1e2331;
+    --accent-light: #242a3b;
+    --scpc: var(--hover-color);
+    --color-1: var(--hover-color);
+}
+
+::selection {
+    background-color: #c21f27;
+    color: white;
+}
+
+#root {
+   width: 100%;
+   height: 100vh;
+}
+.make-navbar-bg {
+    -webkit-box-shadow: 0 10px 15px -6px rgba(0, 0, 0, .3);
+    box-shadow: 0 10px 15px -6px rgba(0, 0, 0, .3);
+}
+.navbar {
+    background-color: var(--main-bg);
+}
+
+.navbar a {
+    color: white;
+}
+
+/*Toast*/
+.toast {
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+    z-index: 10;
+    -webkit-box-shadow: 0 80px 100px -24px rgba(0, 0, 0, .45);
+    box-shadow: 0 80px 100px -24px rgba(0, 0, 0, .45);
+}
+.toast i,
+.toast strong,
+.toast span{
+    color: white;
+}
+.toast .toast-header {
+    background-color: #c21f27;
+    color: white;
+    border-bottom: none;
+}
+
+/*footer*/
+.footer {
+    background-color: var(--main-bg);
+    z-index: 0;
+}
+
+.footer div, .footer span,.footer h6 {
+    color: white;
+}
+
+.footer i {
+    color: white;
+}
+
+.footer a {
+    color: white;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {}
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {}
+
+/* Large devices (desktops, 992px and up) */
+@media (max-width: 992px) {}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (max-width: 1200px) {}
