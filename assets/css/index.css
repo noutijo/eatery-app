@@ -24,14 +24,22 @@
     color: white;
 }
 
-#root {
-   width: 100%;
-   height: 100vh;
+#map {
+    width: 100%;
+    height: 100vh;
 }
+
+.make-shbr {
+    -webkit-box-shadow: 0 10px 15px -6px rgba(0, 0, 0, .3);
+    box-shadow: 0 10px 15px -6px rgba(0, 0, 0, .3);
+    border: 1px solid #f1f1f1;
+}
+
 .make-navbar-bg {
     -webkit-box-shadow: 0 10px 15px -6px rgba(0, 0, 0, .3);
     box-shadow: 0 10px 15px -6px rgba(0, 0, 0, .3);
 }
+
 .navbar {
     background-color: var(--main-bg);
 }
@@ -49,11 +57,13 @@
     -webkit-box-shadow: 0 80px 100px -24px rgba(0, 0, 0, .45);
     box-shadow: 0 80px 100px -24px rgba(0, 0, 0, .45);
 }
+
 .toast i,
 .toast strong,
-.toast span{
+.toast span {
     color: white;
 }
+
 .toast .toast-header {
     background-color: #c21f27;
     color: white;
@@ -66,7 +76,9 @@
     z-index: 0;
 }
 
-.footer div, .footer span,.footer h6 {
+.footer div,
+.footer span,
+.footer h6 {
     color: white;
 }
 
