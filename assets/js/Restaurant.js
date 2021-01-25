@@ -1,7 +1,5 @@
-class Restaurant{
-    constructor(props, context) {
-        
-        
+class Restaurant {
+    constructor() {
+
     }
-    
 }

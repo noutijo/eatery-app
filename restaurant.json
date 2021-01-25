@@ -1,9 +1,9 @@
 [
    {
-      "restaurantName":"Bronco",
-      "address":"39 Rue des Petites Écuries, 75010 Paris",
-      "lat":48.8737815,
-      "long":2.3501649,
+      "restaurantName":"Restaurant Royal",
+      "address":"39 Rue des Petites Akwa, 75010 Douala",
+      "lat":4.0410564,
+      "long":9.7678687,
       "ratings":[
          {
             "stars":4,
@@ -16,14 +16,30 @@
       ]
    },
    {
-      "restaurantName":"Babalou",
-      "address":"4 Rue Lamarck, 75018 Paris",
-      "lat":48.8865035,
-      "long":2.3442197,
+      "restaurantName":"La Fouchette",
+      "address":"4 Rue akwa, 75018 Douala",
+      "lat":4.0510564,
+      "long":9.6678687,
       "ratings":[
          {
             "stars":5,
             "comment":"Tiny pizzeria next to Sacre Coeur!"
+         },
+         {
+            "stars":3,
+            "comment":"Meh, it was fine too."
+         }
+      ]
+   },
+   {
+      "restaurantName":"Tata NICOLE",
+      "address":"4 Rue akwa, 75015 Douala",
+      "lat":4.0310564,
+      "long":9.6678687,
+      "ratings":[
+         {
+            "stars":5,
+            "comment":"Great restaurant"
          },
          {
             "stars":3,
