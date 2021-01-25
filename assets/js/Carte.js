@@ -123,17 +123,15 @@ class Carte {
 
        let service = new google.maps.places.PlacesService(this.map);
 
-       service.nearbySearch({
+       new google.maps.places.PlacesService(this.map).nearbySearch(callback({
            location: this.currentUserPosition,
            radius: 5500,
            type: ['restaurant']
-       }, callback);
+       }), callback);
 
-       service.then((results, status)=> {
-           if (status === google.maps.places.PlacesServiceStatus.OK) {
+       service.then((results)=> {
                for (var i = 0; i < results.length; i++) {
                    console.log(results);
-               }
            }
        });
     }
