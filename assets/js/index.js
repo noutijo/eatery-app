@@ -1,6 +1,30 @@
-function initMap() {
-    let carte = new Carte();
-    carte.displayRestaurantAround();
+function init() {
+
+    let map = new google.maps.Map(document.getElementById("map"),{
+        center: {
+            lat: 4.0510564,
+            lng: 9.6678687
+        },
+        zoom:10
+    });
+
+    let carte = new Carte(map);
+    carte.addMarkerUser({
+        lat: 4.0510564,
+        lng: 9.6678687
+    });
+
+    carte.getUserPosition()
+    .then((position)=>{
+        carte.currentUserPosition=position;
+        carte.map.setCenter(position);
+        carte.addMarkerUser(position);
+        carte.displayLocalRestaurant();
+        carte.displayRestaurantAround()
+        .then((res)=>{
+            console.log(res);
+        })
+    })
 }
 
 

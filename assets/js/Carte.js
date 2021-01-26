@@ -1,24 +1,9 @@
 class Carte {
 
-    constructor() {
-        this.map = null;
-        this.currentUserPosition=null;
-        this.initMap();
-    }
-
-    initMap = () => {
-
-        this.getUserPosition()
-            .then(position => {
-                console.log(position);
-                this.currentUserPosition=position;
-                this.map = new google.maps.Map(document.getElementById("map"), {
-                    center: position,
-                    zoom: 10,
-                });
-                this.addMarkerUser(position);
-            }).then(this.displayLocalRestaurant())
-            .catch(err => alert(err))
+    constructor(map) {
+        this.map = map;
+        this.currentUserPosition = null;
+        this.service = new google.maps.places.PlacesService(map);
     }
 
     addMarkerUser(position) {
@@ -73,7 +58,6 @@ class Carte {
     }
 
     displayRestaurants = restaurants => {
-
         restaurants.forEach((restaurant, index) => {
 
             $('#restaurantsList').append(`
@@ -120,20 +104,16 @@ class Carte {
     }
 
     displayRestaurantAround() {
-
-       let service = new google.maps.places.PlacesService(this.map);
-
-       new google.maps.places.PlacesService(this.map).nearbySearch(callback({
-           location: this.currentUserPosition,
-           radius: 5500,
-           type: ['restaurant']
-       }), callback);
-
-       service.then((results)=> {
-               for (var i = 0; i < results.length; i++) {
-                   console.log(results);
-           }
-       });
+        let self = this;
+        return new Promise((resolve, reject) => {
+            self.service.nearbySearch({
+                location: this.currentUserPosition,
+                radius: 5000,
+                types: ['restaurant']
+            }, (res) => {
+                resolve(res);
+            });
+        })
     }
 
 }
