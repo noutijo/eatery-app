@@ -7,16 +7,9 @@
 }
 
 :root {
-    --main-color: #858ea1;
-    --hover-color: #d0d7e3;
-    --main-border: 1px solid #191c28;
-    --main-bg: #da2a32;
-    --base-bg: #1e2331;
-    --light-bg: #242a3b;
-    --accent: #1e2331;
-    --accent-light: #242a3b;
-    --scpc: var(--hover-color);
-    --color-1: var(--hover-color);
+    --main-bg: #1e2331;
+    --base-bg: #111522;
+    --light-bg: #0c1324;
 }
 
 ::selection {
@@ -65,7 +58,7 @@
 }
 
 .toast .toast-header {
-    background-color: #c21f27;
+    background-color: var(--light-bg);
     color: white;
     border-bottom: none;
 }
