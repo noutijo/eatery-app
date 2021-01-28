@@ -9,10 +9,6 @@ function init() {
     });
 
     let carte = new Carte(map);
-    carte.addMarkerUser({
-        lat: 4.0510564,
-        lng: 9.6678687
-    });
 
     carte.getUserPosition()
     .then((position)=>{
