@@ -75,7 +75,7 @@
         </div>
     </nav>
 
-    <div class="container-fluid mt-3 mb-3 main">
+    <div class="container-fluid mt-3 mb-3 main main-part">
         <div class="row">
             <div class="col-12 col-md-12 col-lg-9">
                 <div id="map"> </div>
@@ -83,12 +83,40 @@
             <div class="col-12 col-md-12 col-lg-3">
                 <div class="row">
                     <div class="col-12">
-
-                        <div class="row" id="restaurantsList">
-                            
+                        <div class="row">
+                            <diiv class="col-4 mt-5 mt-lg-3 mt-4">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Min</label>
+                                    <select class="form-control" id="minRate">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                            </diiv>
+                            <diiv class="col-4 mt-5 mt-lg-3 mt-4">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Max</label>
+                                    <select class="form-control" id="maxRate">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                            </diiv>
+                            <diiv class="col-6 col-lg-4 mt-lg-5 mt-lg-6">
+                                <button  type="submit" class="btn btn-primary btn-sort" onclick="sortRestaurent()"><i class="fa fa-undo"></i></button>
+                            </diiv>
+                            <div class="col-12" style="overflow-y: visible;">
+                                <div class="row" id="restaurantsList"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    
             </div>
 
         </div>
@@ -121,16 +149,6 @@
                 </div>
             </div>
             <div class="col-12 col-lg-1"></div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-4"></div>
-            <div class="col-4">
-                
-            </div>
-            <div class="col-4"></div>
         </div>
     </div>
 

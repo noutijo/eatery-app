@@ -71,22 +71,19 @@ class Carte {
                                         <div class="card">
                                             <div class="card-header" id="headingOne">
                                                 <h2 class="mb-0">
-                                                    <button class="btn btn-link btn-block text-left" type="button"
+                                                    <div class="btn btn-link btn-block text-left"
                                                         data-toggle="collapse" data-target="#collapse${index}"
                                                         aria-expanded="true" aria-controls="collapse${index}">
-                                                        comments
-                                                    </button>
+                                                        <i class="fa fa-arrow-down"></i>
+                                                    </div>
                                                 </h2>
                                             </div>
-    
-                                            <div div id = "collapse${index}"
-                                            class = "collapse"
-                                            aria - labelledby = "headingOne"
+                                            <div id="collapse${index}"
+                                            class="collapse"
+                                            aria-labelledby="headingOne"
                                                 data-parent="#accordionExample">
                                                 <div class="card-body">
-                                                   ${restaurant.ratings.forEach(items => {
-                                                       `${items.comment}`
-                                                   })}
+                                                   ${restaurant.ratings.comment}
                                                 </div>
                                             </div>
                                         </div>

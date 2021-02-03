@@ -1,6 +1,6 @@
 * {
   font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   padding: 0;
   font-weight: 400;
   color: black;
@@ -10,15 +10,17 @@
   --main-bg: #1e2331;
   --base-bg: #111522;
   --light-bg: #0c1324;
+  --second-color: #c21f27;
+  --second-color-one: #e1e4eb;
 }
 
 ::-moz-selection {
-  background-color: #c21f27;
+  background-color: var(--second-color);
   color: white;
 }
 
 ::selection {
-  background-color: #c21f27;
+  background-color: var(--second-color);
   color: white;
 }
 
@@ -85,6 +87,25 @@
 }
 
 .footer a {
+  color: white;
+}
+
+/*Input*/
+select {
+  border: none;
+  border-radius: 5px !important;
+  -webkit-box-shadow: 0 5px 25px rgba(34, 60, 47, 0.1);
+          box-shadow: 0 5px 25px rgba(34, 60, 47, 0.1);
+  outline: none !important;
+}
+
+.btn-sort {
+  border-radius: 100px !important;
+  background-color: var(--second-color) !important;
+  border: none;
+}
+
+.btn-sort i {
   color: white;
 }
 
