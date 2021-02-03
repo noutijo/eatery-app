@@ -31,7 +31,7 @@ class Carte {
     getUserPosition() {
         return new Promise((resolve, reject) => {
             if (!navigator.geolocation) {
-                reject('We can\'t display the map')
+                reject("We can't display the map")
             }
 
             if (navigator.geolocation) {
@@ -85,7 +85,9 @@ class Carte {
                                             aria-labelledby="headingOne"
                                                 data-parent="#accordionExample">
                                                 <div class="card-body">
-                                                   ${restaurant.ratings}
+                                                    ${restaurant.ratings.forEach(item => {
+                                                       `${item.comment}`
+                                                   })}
                                                 </div>
                                             </div>
                                         </div>
@@ -103,9 +105,9 @@ class Carte {
     }
 
     displayRestaurantAround() {
-        let self = this;
+
         return new Promise((resolve, reject) => {
-            self.service.nearbySearch({
+            this.service.nearbySearch({
                 location: this.currentUserPosition,
                 radius: 5000,
                 types: ['restaurant']

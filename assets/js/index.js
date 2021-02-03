@@ -20,13 +20,14 @@ function init() {
                 .then((res) => {
                     console.log(res);
                 })
+        }).catch(error => {
+            console.log(error);
         })
 }
 
 let sortRestaurent = () => {
     let minRate = $('#minRate').val();
     let maxRate = $('#maxRate').val();
-
 
     alert(isMinRateLessThanMaxRate(minRate, maxRate));
 
