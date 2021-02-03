@@ -4,6 +4,7 @@ class Carte {
         this.map = map;
         this.currentUserPosition = null;
         this.service = new google.maps.places.PlacesService(map);
+        this.restaurants=[];
     }
 
     addMarkerUser(position) {
@@ -51,7 +52,8 @@ class Carte {
         fetch("./restaurant.json").then(resp => {
             return resp.json();
         }).then(restaurants => {
-            this.displayRestaurants(restaurants);;
+            this.restaurants=restaurants;
+            this.displayRestaurants(this.restaurants);
         }).catch(error => {
             console.log(error);
         });
@@ -62,7 +64,7 @@ class Carte {
 
             $('#restaurantsList').append(`
         
-                                    <div div class = "col-12 make-shbr mt-3 animate__animated animate__fadeInRight animate__delay-0.5s" >
+                            <div class="col-12 make-shbr mt-3 animate__animated animate__fadeInRight animate__delay-0.5s">
                                     <p class="mt-3 mb-3"><strong>${restaurant.restaurantName}</strong></p>
                                     <p class="my-3">${restaurant.address}</p>
                                     <p class="my-3">Raiting</p>
@@ -83,13 +85,13 @@ class Carte {
                                             aria-labelledby="headingOne"
                                                 data-parent="#accordionExample">
                                                 <div class="card-body">
-                                                   ${restaurant.ratings.comment}
+                                                   ${restaurant.ratings}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    </p>
-                                </div>                             
+                                </p>
+                             </div>                             
         
         `);
 
