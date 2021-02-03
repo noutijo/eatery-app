@@ -63,7 +63,7 @@ class Carte {
             $('#restaurantsList').append(`
         
                                     <div div class = "col-12 make-shbr mt-3 animate__animated animate__fadeInRight animate__delay-0.5s" >
-                                    <p class="mt-3 mb-3">${restaurant.restaurantName}</p>
+                                    <p class="mt-3 mb-3"><strong>${restaurant.restaurantName}</strong></p>
                                     <p class="my-3">${restaurant.address}</p>
                                     <p class="my-3">Raiting</p>
                                     <p>
