@@ -1,65 +1,68 @@
-[
-   {
-      "restaurantName":"Restaurant Royal",
-      "address":"39 Rue des Petites Akwa, 75010 Douala",
-      "lat":4.0410564,
-      "long":9.7678687,
-      "ratings":[
-         {
-            "stars":4,
-            "comment":"Great! But not many veggie options."
+[{
+      "restaurantName": "Restaurant Royal",
+      "address": "39 Rue des Petites Akwa, 75010 Douala",
+      "lat": 4.0410564,
+      "long": 9.7678687,
+      "ratings": [{
+            "stars": 4,
+            "comment": "Great! But not many veggie options."
          },
          {
-            "stars":5,
-            "comment":"My favorite restaurant!"
+            "stars": 5,
+            "comment": "My favorite restaurant!"
          }
       ]
    },
    {
-      "restaurantName":"La Fouchette",
-      "address":"4 Rue akwa, 75018 Douala",
-      "lat":4.0510564,
-      "long":9.6678687,
-      "ratings":[
-         {
-            "stars":5,
-            "comment":"Tiny pizzeria next to Sacre Coeur!"
+      "restaurantName": "La Fouchette",
+      "address": "4 Rue akwa, 75018 Douala",
+      "lat": 4.0510564,
+      "long": 9.6678687,
+      "ratings": [{
+            "stars": 5,
+            "comment": "Tiny pizzeria next to Sacre Coeur!"
          },
          {
-            "stars":3,
-            "comment":"Meh, it was fine too."
+            "stars": 3,
+            "comment": "Meh, it was fine too."
          }
       ]
    },
    {
-      "restaurantName":"Tata NICOLE",
-      "address":"4 Rue akwa, 75015 Douala",
-      "lat":4.0310564,
-      "long":9.6678687,
-      "ratings":[
-         {
-            "stars":5,
-            "comment":"Great restaurant"
+      "restaurantName": "Tata NICOLE",
+      "address": "4 Rue akwa, 75015 Douala",
+      "lat": 4.0310564,
+      "long": 9.6678687,
+      "ratings": [{
+            "stars": 5,
+            "comment": "Great restaurant"
          },
          {
-            "stars":3,
-            "comment":"Meh, it was fine."
+            "stars": 3,
+            "comment": "Meh, it was fine."
          }
       ]
    },
    {
-      "restaurantName":"Oreol restau",
-      "address":"4 Rue Akwa Nord, 75015 Douala",
-      "lat":4.0010554,
-      "long":9.6278477,
-      "ratings":[
-         {
-            "stars":5,
-            "comment":"Great restaurant"
+      "restaurantName": "Oreol restau",
+      "address": "4 Rue Akwa Nord, 75015 Douala",
+      "lat": 4.0010554,
+      "long": 9.6278477,
+      "ratings": [{
+            "stars": 5,
+            "comment": "Great restaurant"
          },
          {
-            "stars":4,
-            "comment":"Meh, it was fine."
+            "stars": 2,
+            "comment": "Meh, it was fine."
+         },
+         {
+            "stars": 1.5,
+            "comment": "Meh, it was fine."
+         },
+         {
+            "stars": 4,
+            "comment": "Meh, it was fine."
          }
       ]
    }
