@@ -110,6 +110,11 @@ select {
     overflow-y: scroll;
     padding-right: 10px;
 }
+.card-body{
+    li{
+        margin-left: 10px;;
+    }
+}
 
 ::-webkit-scrollbar {
     width: 5px;

@@ -8,6 +8,8 @@ function init() {
         zoom: 10
     });
 
+
+    let list = new List();
     let carte = new Carte(map);
 
     carte.getUserPosition()
@@ -15,15 +17,34 @@ function init() {
             carte.currentUserPosition = position;
             carte.map.setCenter(position);
             carte.addMarkerUser(position);
-            carte.displayLocalRestaurant();
-            carte.displayRestaurantAround()
-                .then((res) => {
-                    console.log(res);
-                })
+
+            fetch("./restaurant.json").then(resp => {
+                return resp.json();
+            }).then(restaurants => {
+
+                restaurants.forEach((item, index) => {
+                    let restaurant = new Restaurant(item.restaurantName, item.address, {
+                        lat: item.lat,
+                        lng: item.long
+                    }, item.ratings,index)
+
+                    list.addRestaurant(restaurant);
+                    carte.addMarkerRestau(restaurant.position);
+                });
+            }).catch(error => {
+                $('#restaurantsList').append(error);
+            });
+
+
         }).catch(error => {
-            console.log(error);
+            $('#restaurantsList').append(error);
+            $('#restaurantsList').css({
+                'padding-top': '50px',
+                'color': 'red'
+            });
         })
 }
+
 
 let sortRestaurent = () => {
     let minRate = $('#minRate').val();
@@ -52,3 +73,11 @@ $(window).scroll(function () {
 
     displayRestaurants(restaurants);
 }*/
+
+/*
+carte.displayLocalRestaurant();
+carte.displayRestaurantAround()
+    .then((res) => {
+        console.log(res);
+    })
+*/

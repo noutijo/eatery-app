@@ -1,8 +1,10 @@
-class List{
-    constructor(){
-
+class List {
+    constructor() {
+        this.allRestaurant = [];
+        this.filteredRestaurant = [];
     }
-    add(){
-        
+    addRestaurant(restaurant) {
+        this.allRestaurant.push(restaurant);
+        restaurant.displayResaurant();
     }
 }

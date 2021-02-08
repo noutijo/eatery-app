@@ -46,5 +46,21 @@
             "comment":"Meh, it was fine."
          }
       ]
+   },
+   {
+      "restaurantName":"Oreol restau",
+      "address":"4 Rue Akwa Nord, 75015 Douala",
+      "lat":4.0010554,
+      "long":9.6278477,
+      "ratings":[
+         {
+            "stars":5,
+            "comment":"Great restaurant"
+         },
+         {
+            "stars":4,
+            "comment":"Meh, it was fine."
+         }
+      ]
    }
 ]
