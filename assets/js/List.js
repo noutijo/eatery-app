@@ -1,5 +1,8 @@
 class List{
     constructor(){
+
+    }
+    add(){
         
     }
 }
