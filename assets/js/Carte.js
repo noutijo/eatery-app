@@ -50,7 +50,7 @@ class Carte {
 
     displayLocalRestaurant() {
         fetch("./restaurant.json").then(resp => {
-            return resp.json();
+            return resp.json(); 
         }).then(restaurants => {
             this.restaurants=restaurants;
             this.displayRestaurants(this.restaurants);

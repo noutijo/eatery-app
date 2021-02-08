@@ -15,7 +15,7 @@
 }
 
 ::selection {
-    background-color: var(--second-color);
+    background-color: var(--light-bg);
     color: white;
 }
 
@@ -100,6 +100,36 @@ select {
         color: white;
     }
 
+}
+
+//make overflow where we'll display restaurant
+
+#restaurantsList{
+    width: auto;
+    height: 87vh;
+    overflow-y: scroll;
+    padding-right: 10px;
+}
+
+#restaurantsList::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+#restaurantsList::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+#restaurantsList::-webkit-scrollbar-thumb {
+    background: var(--main-bg);
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+#restaurantsList::-webkit-scrollbar-thumb:hover {
+    background: var(--light-bg);
 }
 
 /* Small devices (landscape phones, 576px and up) */
