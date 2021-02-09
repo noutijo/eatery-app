@@ -62,7 +62,7 @@ let sortRestaurent = () => {
 }
 
 let isMinRateLessThanMaxRate = (minRate, maxRate) => {
-    return (minRate < maxRate);
+    return (minRate <= maxRate);
 }
 
 $(window).scroll(function () {
