@@ -57,7 +57,7 @@ let sortRestaurent = () => {
     if (isMinRateLessThanMaxRate(minRate, maxRate)) {
         list.filter(minRate, maxRate);
     } else {
-        alert('Check your rating interval');
+        alert('Check your rating interval.');
     }
 }
 

@@ -19,10 +19,19 @@ class List {
 
         document.getElementById('restaurantsList').innerHTML = ''
 
-        this.filteredRestaurant.forEach(item => {
-            this.carte.addMarkerRestau(item.position);
-            item.displayResaurant();
-        });
+        if (this.filteredRestaurant.length === 0) {
+            $('#restaurantsList').append("No result found.");
+            $('#restaurantsList').css({
+                'padding-top': '50px',
+                'color': 'red'
+            });
+        } else {
+            this.filteredRestaurant.forEach(item => {
+                this.carte.addMarkerRestau(item.position);
+                item.displayResaurant();
+            });
+        }
+
     }
 
 }
