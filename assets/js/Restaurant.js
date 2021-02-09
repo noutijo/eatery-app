@@ -25,7 +25,7 @@ class Restaurant {
                                                     <div class="btn btn-link btn-block text-left"
                                                         data-toggle="collapse" data-target="#collapse${this.index}"
                                                         aria-expanded="true" aria-controls="collapse${this.index}">
-                                                        <i class="fa fa-arrow-down"></i>
+                                                        <i class="fa fa-arrow-down"> Comments</i>
                                                     </div>
                                                 </h2>
                                             </div>
