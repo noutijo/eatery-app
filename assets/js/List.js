@@ -10,7 +10,7 @@ class List {
         restaurant.displayResaurant();
     }
 
-    filter(min = 4.5, max = 5) {
+    filter(min, max) {
         this.filteredRestaurant = this.allRestaurant.filter(item => {
             return item.avgRating >= min & item.avgRating <= max;
         })

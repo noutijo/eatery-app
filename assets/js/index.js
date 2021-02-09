@@ -34,6 +34,8 @@ function init() {
                     list.addRestaurant(restaurant);
                     carte.addMarkerRestau(restaurant.position);
                 });
+
+                $('.toast').toast('show');
             }).catch(error => {
                 $('#restaurantsList').append(error);
             });

@@ -1,4 +1,5 @@
 class Restaurant {
+    
     constructor(name, address, position, ratings, index) {
         this.name = name;
         this.address = address;
@@ -70,9 +71,9 @@ class Restaurant {
         averageRating = Math.round(averageRating * 10) / 10;
 
         console.log(averageRating)
-
         return averageRating;
     }
+
     getRatingStarsBlock(){
         let ratingStart=[];
 

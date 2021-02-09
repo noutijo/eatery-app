@@ -51,23 +51,31 @@
 /*Toast*/
 .toast {
   position: fixed;
-  left: 10px;
-  bottom: 10px;
-  z-index: 10;
+  left: 25vw;
+  top: 10vh;
+  z-index: 1000;
   -webkit-box-shadow: 0 80px 100px -24px rgba(0, 0, 0, 0.45);
   box-shadow: 0 80px 100px -24px rgba(0, 0, 0, 0.45);
+  border-radius: 100px;
+  display: none;
 }
 
 .toast i,
 .toast strong,
 .toast span {
-  color: white;
+  color: var(--light-bg);
 }
 
 .toast .toast-header {
-  background-color: var(--light-bg);
-  color: white;
+  background-color: white;
+  color: var(--light-bg);
   border-bottom: none;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.toast .toast-body {
+  background-color: white;
+  color: var(--light-bg);
 }
 
 /*footer*/
@@ -145,7 +153,21 @@ select {
 }
 
 /* Small devices (landscape phones, 576px and up) */
+@media (max-width: 767.98px) {
+  .toast {
+    left: 1vw;
+    top: 1%;
+  }
+}
+
 /* Medium devices (tablets, 768px and up) */
+@media (max-width: 991.98px) {
+  .toast {
+    left: 1vw;
+    top: 20%;
+  }
+}
+
 /* Large devices (desktops, 992px and up) */
 /* Extra large devices (large desktops, 1200px and up) */
 /*# sourceMappingURL=index.css.map */
