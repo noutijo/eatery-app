@@ -5,6 +5,7 @@ class Carte {
         this.currentUserPosition = null;
         this.service = new google.maps.places.PlacesService(map);
         this.restaurants = [];
+        this.markers = [];
     }
 
     addMarkerUser(position) {
@@ -13,6 +14,7 @@ class Carte {
             map: this.map
         });
     }
+
     addMarkerRestau(position) {
 
         var icon = {
@@ -21,11 +23,20 @@ class Carte {
             origin: new google.maps.Point(0, 0), // origin
             anchor: new google.maps.Point(0, 0) // anchor
         };
-        new google.maps.Marker({
+        let maker = new google.maps.Marker({
             position: position,
             map: this.map,
-            icon: icon
+            icon: icon,
         });
+
+        this.markers.push(maker);
+    }
+
+    removeAllMarkerResto() {
+        for (let index = 0; index < this.markers.length; index++) {
+            this.markers[index].setMap(null);
+        }
+        this.markers = [];
     }
 
     getUserPosition() {
@@ -42,7 +53,6 @@ class Carte {
             );
         });
     }
-
 
     displayRestaurantAround() {
 

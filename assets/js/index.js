@@ -1,3 +1,6 @@
+let carte
+let list;
+
 function init() {
 
     let map = new google.maps.Map(document.getElementById("map"), {
@@ -9,8 +12,8 @@ function init() {
     });
 
 
-    let list = new List();
-    let carte = new Carte(map);
+    carte = new Carte(map);
+    list = new List(carte);
 
     carte.getUserPosition()
         .then((position) => {
@@ -26,7 +29,7 @@ function init() {
                     let restaurant = new Restaurant(item.restaurantName, item.address, {
                         lat: item.lat,
                         lng: item.long
-                    }, item.ratings,index)
+                    }, item.ratings, index)
 
                     list.addRestaurant(restaurant);
                     carte.addMarkerRestau(restaurant.position);
@@ -50,8 +53,12 @@ let sortRestaurent = () => {
     let minRate = $('#minRate').val();
     let maxRate = $('#maxRate').val();
 
-    alert(isMinRateLessThanMaxRate(minRate, maxRate));
 
+    if (isMinRateLessThanMaxRate(minRate, maxRate)) {
+        list.filter(minRate, maxRate);
+    } else {
+        alert('Check your rating interval');
+    }
 }
 
 let isMinRateLessThanMaxRate = (minRate, maxRate) => {
