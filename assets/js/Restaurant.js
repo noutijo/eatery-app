@@ -4,8 +4,9 @@ class Restaurant {
         this.address = address;
         this.position = position;
         this.ratings = ratings;
-        this.avgRating = this.calcAverage();;
+        this.avgRating = this.calcAverage();
         this.comments = this.fillComments();
+        this.ratingStarsBlock = this.getRatingStarsBlock();
         this.index = index;
     }
 
@@ -15,7 +16,7 @@ class Restaurant {
                             <div class="col-12 make-shbr mt-3 animate__animated animate__fadeInRight animate__delay-0.5s">
                                     <p class="mt-3 mb-3"><strong>${this.name}</strong></p>
                                     <p class="my-3">${this.address}</p>
-                                    <p class="my-3">Raiting: <strong>${this.avgRating}</strong></p>
+                                    <p class="my-3">${this.ratingStarsBlock.join('')}<span style="padding-left:5px">${this.avgRating}</span></p>
                                     <p>
                                     <div class="accordion" id="accordionExample">
                                         <div class="card">
@@ -71,5 +72,17 @@ class Restaurant {
         console.log(averageRating)
 
         return averageRating;
+    }
+    getRatingStarsBlock(){
+        let ratingStart=[];
+
+        for (let n = 0; n < Math.round(this.avgRating); n++) {
+            ratingStart.push(`<span class="fa fa-star checked"></span>`);   
+        }
+        for (let w = 0; w < (5-Math.round(this.avgRating)); w++) {
+            ratingStart.push(`<span class="fa fa-star"></span>`);   
+        }
+
+        return ratingStart;
     }
 }

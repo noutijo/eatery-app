@@ -94,7 +94,7 @@ select {
 .btn-sort {
     border-radius: 100px !important;
     background-color: var(--second-color) !important;
-    border:none;
+    border: none;
 
     i {
         color: white;
@@ -104,18 +104,23 @@ select {
 
 //make overflow where we'll display restaurant
 
-#restaurantsList{
+#restaurantsList {
     width: auto;
     height: 87vh;
     overflow-y: scroll;
     padding-right: 10px;
 }
-.card-body{
-    li{
-        margin-left: 10px;;
+
+.card-body {
+    li {
+        margin-left: 10px;
+        ;
     }
 }
-
+ .checked {
+     color: orange;
+ }
+ 
 ::-webkit-scrollbar {
     width: 5px;
 }

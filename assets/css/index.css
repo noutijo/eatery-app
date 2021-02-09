@@ -120,6 +120,10 @@ select {
   margin-left: 10px;
 }
 
+.checked {
+  color: orange;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
 }
