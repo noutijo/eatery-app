@@ -122,9 +122,30 @@ select {
 .card-body {
     li {
         margin-left: 10px;
-        ;
+        margin-top: 10px;
+        list-style-type: '💬';
+        padding-inline-start: 1ch;
+
+        &::before {
+            content: "comment::";
+            background: #f1f1f1;
+            color: gray;
+            border-radius: 1ch;
+            padding-inline: 1ch;
+            margin-inline-end: 1ch;
+        }
     }
 }
+
+ .btn-comment {
+     background: var(--light-bg);
+     color:white;
+     border-radius: 5px;
+     padding:5px 10px 5px 10px;
+ }
+ .cursor-pointer{
+     cursor: pointer;
+ }
 
 .checked {
     color: orange;

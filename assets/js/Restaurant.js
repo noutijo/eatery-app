@@ -1,13 +1,11 @@
 class Restaurant {
-    
+
     constructor(name, address, position, ratings, index) {
         this.name = name;
         this.address = address;
         this.position = position;
         this.ratings = ratings;
         this.avgRating = this.calcAverage();
-        this.comments = this.fillComments();
-        this.ratingStarsBlock = this.getRatingStarsBlock();
         this.index = index;
     }
 
@@ -17,25 +15,28 @@ class Restaurant {
                             <div class="col-12 make-shbr mt-3 animate__animated animate__fadeInRight animate__delay-0.5s">
                                     <p class="mt-3 mb-3"><strong>${this.name}</strong></p>
                                     <p class="my-3">${this.address}</p>
-                                    <p class="my-3">${this.ratingStarsBlock.join('')}<span style="padding-left:5px">${this.avgRating}</span></p>
+                                    <p class="my-3">${this.getRatingStarsBlock().join('')}</p>
                                     <p>
-                                    <div class="accordion" id="accordionExample">
+                                    <div class="accordion" id="accordionExample${this.index}" >
                                         <div class="card">
-                                            <div class="card-header" id="headingOne">
+                                            <div class="card-header" id="heading${this.index}" >
                                                 <h2 class="mb-0">
-                                                    <div class="btn btn-link btn-block text-left"
+                                                    <div >
+                                                        <i class = "fa fa-arrow-down cursor-pointer"
                                                         data-toggle="collapse" data-target="#collapse${this.index}"
-                                                        aria-expanded="true" aria-controls="collapse${this.index}">
-                                                        <i class="fa fa-arrow-down"> Comments</i>
+                                                        aria-expanded="true" aria-controls="collapse${this.index}">  Comments</i>
+
+                                                        <span id="Addcomment_${this.index}" style="float:right; font-size: 13px;" class="fa fa-comment btn-comment cursor-pointer"> Add</span>
                                                     </div>
+                                                    
                                                 </h2>
                                             </div>
                                             <div id="collapse${this.index}"
                                             class="collapse"
-                                            aria-labelledby="headingOne"
-                                                data-parent="#accordionExample">
+                                            aria-labelledby="heading${this.index}"
+                                                data-parent="#accordionExample${this.index}">
                                                 <div class="card-body">
-                                                    <ul>${this.comments.join('')}</ul>
+                                                    <ul class="comments_${this.index}">${this.fillComments().join('')}</ul>
                                                 </div>
                                             </div>
                                         </div>

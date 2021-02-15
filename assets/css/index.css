@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 13px;
@@ -57,7 +58,6 @@
   -webkit-box-shadow: 0 80px 100px -24px rgba(0, 0, 0, 0.45);
   box-shadow: 0 80px 100px -24px rgba(0, 0, 0, 0.45);
   border-radius: 100px;
-  display: none;
 }
 
 .toast i,
@@ -126,6 +126,31 @@ select {
 
 .card-body li {
   margin-left: 10px;
+  margin-top: 10px;
+  list-style-type: '💬';
+  -webkit-padding-start: 1ch;
+          padding-inline-start: 1ch;
+}
+
+.card-body li::before {
+  content: "comment::";
+  background: #f1f1f1;
+  color: gray;
+  border-radius: 1ch;
+  padding-inline: 1ch;
+  -webkit-margin-end: 1ch;
+          margin-inline-end: 1ch;
+}
+
+.btn-comment {
+  background: var(--light-bg);
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .checked {
