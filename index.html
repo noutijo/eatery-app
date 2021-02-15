@@ -59,6 +59,44 @@
 
 <body>
 
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel"> <i class="fa fa-comment"></i> Add new comment</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div id="addCommentError"> You've to enter the comment.</div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Rating:</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Comment:</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="AddNewCommentButton" type="button" style="background-color:#0c1324; border: none;" class="btn btn-primary">Add Comment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
     <nav id="navbar_top" class="navbar navbar-expand-lg make-navbar-bg">
         <a class="navbar-brand" href="https://noutijo.github.io/">
             <img width="50" height="50" src="./assets/icons/eaterynoteLogo.png" alt="noutijoLogo"
@@ -75,6 +113,7 @@
         </div>
     </nav>
 
+    <!-- body -->
     <div class="container-fluid mt-3 mb-3 main main-part">
         <div class="row">
             <div class="col-12 col-md-12 col-lg-9">

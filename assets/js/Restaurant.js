@@ -26,7 +26,7 @@ class Restaurant {
                                                         data-toggle="collapse" data-target="#collapse${this.index}"
                                                         aria-expanded="true" aria-controls="collapse${this.index}">  Comments</i>
 
-                                                        <span id="Addcomment_${this.index}" style="float:right; font-size: 13px;" class="fa fa-comment btn-comment cursor-pointer"> Add</span>
+                                                        <span id="Addcomment_${this.index}" style="float:right; font-size: 13px;" class="fa fa-comment btn-comment cursor-pointer" data-toggle="modal" data-target="#staticBackdrop"> Add</span>
                                                     </div>
                                                     
                                                 </h2>

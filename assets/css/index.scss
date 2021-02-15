@@ -137,15 +137,16 @@ select {
     }
 }
 
- .btn-comment {
-     background: var(--light-bg);
-     color:white;
-     border-radius: 5px;
-     padding:5px 10px 5px 10px;
- }
- .cursor-pointer{
-     cursor: pointer;
- }
+.btn-comment {
+    background: var(--light-bg);
+    color: white;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
 
 .checked {
     color: orange;
@@ -168,6 +169,13 @@ select {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: var(--light-bg);
+}
+
+/*Add comment section*/
+#addCommentError {
+    color: red;
+    margin:5px;
+    display: none;
 }
 
 /* Small devices (landscape phones, 576px and up) */
