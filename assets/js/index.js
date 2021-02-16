@@ -2,7 +2,7 @@ let carte;
 let list;
 let index;
 let map;
-let position;
+let clickPosition;
 
 /*init() function for the map*/
 function init() {
@@ -40,22 +40,21 @@ function init() {
 
                 $('.toast').toast('show');
 
-                /*Get lat & lng when user click on map*/
-                google.maps.event.addListener(map, 'mousedown', function (event) {
-
-                     console.log(event.keyCode);
-
-                     position = JSON.stringify(event.latLng);
-                     position = JSON.parse(position);
-
-                     console.log(position);
-
-                 });
-
             }).catch(error => {
                 $('#restaurantsList').append(error);
             });
 
+            /*Get lat & lng when user click on map*/
+            google.maps.event.addListener(map, 'mousedown', function (event) {
+
+                //console.log(event.keyCode);
+
+                clickPosition = JSON.stringify(event.latLng);
+                clickPosition = JSON.parse(clickPosition);
+
+                console.log(clickPosition);
+
+            });
 
         }).catch(error => {
             $('#restaurantsList').append(error);
@@ -74,8 +73,8 @@ $('#AddNewRestaurantButton').on('click', (event) => {
     } else {
        
         let restaurant = new Restaurant($('#restaurantName').val(), $('#restaurantAddreess').val(), {
-            lat: position.lat,
-            lng: position.lng
+            lat: clickPosition.lat,
+            lng: clickPosition.lng
         }, [], list.allRestaurant.length)
 
         list.addRestaurant(restaurant);
