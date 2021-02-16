@@ -2,7 +2,9 @@ let carte;
 let list;
 let index;
 let map;
+let position;
 
+/*init() function for the map*/
 function init() {
 
     map = new google.maps.Map(document.getElementById("map"), {
@@ -12,7 +14,6 @@ function init() {
         },
         zoom: 10
     });
-
 
     carte = new Carte(map);
     list = new List(carte);
@@ -52,6 +53,38 @@ function init() {
         })
 }
 
+/*Get lat & lng when user click on map*/
+$(document).ready(function () {
+    let mapa = document.getElementById('map');
+
+    google.maps.event.addListener(map, 'click', function (event) {
+
+        position = JSON.stringify(event.latLng);
+        
+        console.log(position);
+
+    });
+});
+
+
+/*When add new restaurant*/
+$('#AddNewRestaurantButton').on('click', (event) => {
+
+    if ($('#restaurantName').val() === '' || $('#restaurantAddreess').val() === '') {
+        alert("Verifie yours input")
+    } else {
+       
+        let restaurant = new Restaurant($('#restaurantName').val(), $('#restaurantAddreess').val(), {
+            lat: position.lat,
+            lng: position.long
+        }, [], list.allRestaurant.length)
+
+        list.addRestaurant(restaurant);
+        carte.addMarkerRestau(restaurant.position);
+    }
+})
+
+/*Sort restaurant*/
 let sortRestaurent = () => {
     let minRate = $('#minRate').val();
     let maxRate = $('#maxRate').val();
@@ -63,26 +96,10 @@ let sortRestaurent = () => {
         alert('Check your rating interval.');
     }
 }
-
+/*Check if interval is right*/
 let isMinRateLessThanMaxRate = (minRate, maxRate) => {
     return (minRate <= maxRate);
 }
-
-  const mapDiv = document.getElementById("map");
-
-/*Get lat & lng when user click on map*/
-//Add listener
-google.maps.event.addListener(map, "click", function (event) {
-    var latitude = event.latLng.lat();
-    var longitude = event.latLng.lng();
-    console.log(latitude + ', ' + longitude);
-}); //end addListener
-
-/*google.maps.event.addDomListener(mapDiv, "click", (mapsMouseEvent) => {
-    let position = mapsMouseEvent.latLng;
-    console.log(JSON.stringify(position.latLng.toJSON(), null, 2));
-});*/
- 
 
 /*Get id*/
 let addComment = (id) => {

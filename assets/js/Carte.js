@@ -17,12 +17,13 @@ class Carte {
 
     addMarkerRestau(position) {
 
-        var icon = {
-            url: "./assets/icons/marker.png", // url
-            scaledSize: new google.maps.Size(30, 30), // scaled size
-            origin: new google.maps.Point(0, 0), // origin
-            anchor: new google.maps.Point(0, 0) // anchor
+        let icon = {
+            url: "./assets/icons/marker.png", 
+            scaledSize: new google.maps.Size(30, 30),
+            origin: new google.maps.Point(0, 0), 
+            anchor: new google.maps.Point(0, 0)
         };
+        
         let maker = new google.maps.Marker({
             position: position,
             map: this.map,
