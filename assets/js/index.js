@@ -1,10 +1,11 @@
 let carte;
 let list;
 let index;
+let map;
 
 function init() {
 
-    let map = new google.maps.Map(document.getElementById("map"), {
+    map = new google.maps.Map(document.getElementById("map"), {
         center: {
             lat: 4.0510564,
             lng: 9.6678687
@@ -66,6 +67,22 @@ let sortRestaurent = () => {
 let isMinRateLessThanMaxRate = (minRate, maxRate) => {
     return (minRate <= maxRate);
 }
+
+  const mapDiv = document.getElementById("map");
+
+/*Get lat & lng when user click on map*/
+//Add listener
+google.maps.event.addListener(map, "click", function (event) {
+    var latitude = event.latLng.lat();
+    var longitude = event.latLng.lng();
+    console.log(latitude + ', ' + longitude);
+}); //end addListener
+
+/*google.maps.event.addDomListener(mapDiv, "click", (mapsMouseEvent) => {
+    let position = mapsMouseEvent.latLng;
+    console.log(JSON.stringify(position.latLng.toJSON(), null, 2));
+});*/
+ 
 
 /*Get id*/
 let addComment = (id) => {
