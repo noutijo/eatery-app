@@ -126,14 +126,14 @@ select {
         list-style-type: '💬';
         padding-inline-start: 1ch;
 
-        &::before {
+        /*&::before {
             content: "comment::";
             background: #f1f1f1;
             color: gray;
             border-radius: 1ch;
             padding-inline: 1ch;
             margin-inline-end: 1ch;
-        }
+        }*/
     }
 }
 
@@ -171,8 +171,9 @@ select {
     background: var(--light-bg);
 }
 
-/*Add comment section*/
-#addCommentError {
+/*Add comment and restaurant section*/
+#addCommentError,
+#addRestauError {
     color: red;
     margin:5px;
     display: none;

@@ -130,16 +130,14 @@ select {
   list-style-type: '💬';
   -webkit-padding-start: 1ch;
           padding-inline-start: 1ch;
-}
-
-.card-body li::before {
-  content: "comment::";
-  background: #f1f1f1;
-  color: gray;
-  border-radius: 1ch;
-  padding-inline: 1ch;
-  -webkit-margin-end: 1ch;
-          margin-inline-end: 1ch;
+  /*&::before {
+            content: "comment::";
+            background: #f1f1f1;
+            color: gray;
+            border-radius: 1ch;
+            padding-inline: 1ch;
+            margin-inline-end: 1ch;
+        }*/
 }
 
 .btnAddComment {
@@ -177,8 +175,9 @@ select {
   background: var(--light-bg);
 }
 
-/*Add comment section*/
-#addCommentError {
+/*Add comment and restaurant section*/
+#addCommentError,
+#addRestauError {
   color: red;
   margin: 5px;
   display: none;

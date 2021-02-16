@@ -50,7 +50,7 @@ class Restaurant {
         let comments = [];
 
         this.ratings.forEach((item, index) => {
-            comments.push(`<li>${item.comment}</li>`);
+            comments.push(`<li><span class="badge badge-secondary">${item.stars}</span> ${item.comment}</li>`);
         })
 
         return comments;
@@ -89,10 +89,12 @@ class Restaurant {
 
     updateComment(rating) {
         this.ratings.push(rating);
-        $('#comments_' + this.index).append(`<li>${rating.comment}</li>`);
+        $('#comments_' + this.index).append(`<li><span class="badge badge-secondary">${rating.stars}</span> ${rating.comment}</li>`);
 
         this.avgRating = this.calcAverage();
         this.updateRatings();
+
+        $('#staticBackdrop').modal('hide');
     }
 
     updateRatings() {
