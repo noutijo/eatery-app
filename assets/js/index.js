@@ -38,21 +38,19 @@ function init() {
                     carte.addMarkerRestau(restaurant.position);
                 });
 
-                $('.toast').toast('show');
+                $('#toast-info').toast('show');
 
             }).catch(error => {
                 $('#restaurantsList').append(error);
             });
 
             /*Get lat & lng when user click on map*/
-            google.maps.event.addListener(map, 'mousedown', function (event) {
+            google.maps.event.addListener(map, 'contextmenu', function (event) {
 
-                //console.log(event.keyCode);
+                $('#staticBackdropRestau').modal('show');
 
                 clickPosition = JSON.stringify(event.latLng);
                 clickPosition = JSON.parse(clickPosition);
-
-                console.log(clickPosition);
 
             });
 
@@ -71,7 +69,7 @@ $('#AddNewRestaurantButton').on('click', (event) => {
     if ($('#restaurantName').val() === '' || $('#restaurantAddreess').val() === '') {
         $('#addRestauError').show();
     } else {
-       
+
         let restaurant = new Restaurant($('#restaurantName').val(), $('#restaurantAddreess').val(), {
             lat: clickPosition.lat,
             lng: clickPosition.lng
@@ -80,10 +78,11 @@ $('#AddNewRestaurantButton').on('click', (event) => {
         list.addRestaurant(restaurant);
         carte.addMarkerRestau(restaurant.position);
 
-         //clear field and close modal
-         document.getElementById('restaurantName').value = '';
-         document.getElementById('restaurantAddreess').value = '';
+        //clear field and close modal
+        document.getElementById('restaurantName').value = '';
+        document.getElementById('restaurantAddreess').value = '';
         $('#staticBackdropRestau').modal('hide');
+        $('#toast-sucessRestau').toast('show');
     }
 })
 
@@ -142,13 +141,13 @@ $('#userComment').keyup(() => {
 })
 
 /*maanger navbar position when windiw is scrolling*/
-$(window).scroll(function () {
+/*$(window).scroll(function () {
     if ($(this).scrollTop() > 40) {
         $('#navbar_top').addClass("fixed-top");
     } else {
         $('#navbar_top').removeClass("fixed-top");
     }
-});
+});*/
 
 /*
 carte.displayLocalRestaurant();

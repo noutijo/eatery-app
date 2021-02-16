@@ -50,7 +50,7 @@
 }
 
 /*Toast*/
-.toast {
+.toast-info {
   position: fixed;
   left: 25vw;
   top: 10vh;
@@ -60,22 +60,51 @@
   border-radius: 100px;
 }
 
-.toast i,
-.toast strong,
-.toast span {
+.toast-info i,
+.toast-info strong,
+.toast-info span {
   color: var(--light-bg);
 }
 
-.toast .toast-header {
+.toast-info .toast-header {
   background-color: white;
   color: var(--light-bg);
   border-bottom: none;
   border-bottom: 1px solid #f1f1f1;
 }
 
-.toast .toast-body {
+.toast-info .toast-body {
   background-color: white;
   color: var(--light-bg);
+}
+
+.toast-sucessRestau {
+  position: fixed;
+  right: 2vw;
+  top: 2vh;
+  z-index: 1000;
+  -webkit-box-shadow: 0 80px 100px -24px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 80px 100px -24px rgba(0, 0, 0, 0.45);
+  border-radius: 100px;
+  display: none;
+}
+
+.toast-sucessRestau i,
+.toast-sucessRestau strong,
+.toast-sucessRestau span {
+  color: var(--light-bg);
+}
+
+.toast-sucessRestau .toast-header {
+  background-color: white;
+  color: var(--light-bg);
+  border-bottom: none;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.toast-sucessRestau .toast-body {
+  background-color: white;
+  color: #1cec2d;
 }
 
 /*footer*/

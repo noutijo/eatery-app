@@ -95,10 +95,11 @@ class Restaurant {
         this.updateRatings();
 
         $('#staticBackdrop').modal('hide');
+        $('#toast-sucessRestau').toast('show');
     }
 
     updateRatings() {
         document.getElementById('ratings_' + this.index).innerHTML = ''
-        document.getElementById('ratings_' + this.index).innerHTML=`${this.getRatingStarsBlock().join('')}`;
+        document.getElementById('ratings_' + this.index).innerHTML = `${this.getRatingStarsBlock().join('')}`;
     }
 }
