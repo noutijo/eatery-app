@@ -1,5 +1,6 @@
-let carte
+let carte;
 let list;
+let index;
 
 function init() {
 
@@ -50,7 +51,6 @@ function init() {
         })
 }
 
-
 let sortRestaurent = () => {
     let minRate = $('#minRate').val();
     let maxRate = $('#maxRate').val();
@@ -67,6 +67,36 @@ let isMinRateLessThanMaxRate = (minRate, maxRate) => {
     return (minRate <= maxRate);
 }
 
+/*Get id*/
+let addComment = (id) => {
+    index = id.split('_')[1];
+}
+
+/*When add new comment*/
+$('#AddNewCommentButton').on('click', (event) => {
+    if ($('#userComment').val() === '') {
+        $('#addCommentError').show();
+    } else {
+        let rating = $('#userRating').val();
+        let comment = $('#userComment').val();
+
+        list.allRestaurant[index].updateComment({
+            stars: parseInt(rating),
+            comment: comment
+        });
+
+        //clear textarea
+        document.getElementById('userComment').value = ''
+    }
+})
+
+/*close display error*/
+$('#userComment').keyup(() => {
+    $('#addCommentError').hide();
+})
+
+
+/*maanger navbar position when windiw is scrolling*/
 $(window).scroll(function () {
     if ($(this).scrollTop() > 40) {
         $('#navbar_top').addClass("fixed-top");
@@ -75,13 +105,6 @@ $(window).scroll(function () {
     }
 });
 
-
-/*async function displayLocalRestaurant() {
-    let resp = await fetch("./restaurant.json");
-    let restaurants = await resp.json();
-
-    displayRestaurants(restaurants);
-}*/
 
 /*
 carte.displayLocalRestaurant();
