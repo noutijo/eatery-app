@@ -1,16 +1,17 @@
 class Carte {
 
-    constructor(map) {
+    constructor(map, currentUserPosition) {
         this.map = map;
-        this.currentUserPosition = null;
+        this.currentUserPosition = currentUserPosition;
         this.service = new google.maps.places.PlacesService(map);
         this.restaurants = [];
         this.markers = [];
+        this.addMarkerUser();
     }
 
-    addMarkerUser(position) {
+    addMarkerUser() {
         new google.maps.Marker({
-            position: position,
+            position: this.currentUserPosition,
             map: this.map
         });
     }
@@ -23,7 +24,7 @@ class Carte {
             origin: new google.maps.Point(0, 0), 
             anchor: new google.maps.Point(0, 0)
         };
-        
+
         let maker = new google.maps.Marker({
             position: position,
             map: this.map,
@@ -40,22 +41,7 @@ class Carte {
         this.markers = [];
     }
 
-    getUserPosition() {
-        return new Promise((resolve, reject) => {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    resolve({
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    });
-                }, () => {
-                    reject('We need to know your location to display restaurants around you.');
-                }
-            );
-        });
-    }
-
-    displayRestaurantAround() {
+    getRestaurantAround() {
 
         return new Promise((resolve, reject) => {
             this.service.nearbySearch({

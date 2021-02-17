@@ -4,47 +4,62 @@ let index;
 let map;
 let clickPosition;
 
+/*Get current user position*/
+function getUserPosition() {
+    return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                resolve({
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                });
+            }, () => {
+                reject('We need to know your location to display restaurants around you.');
+            }
+        );
+    });
+}
+
 /*init() function for the map*/
 function init() {
-
-    map = new google.maps.Map(document.getElementById("map"), {
-        center: {
-            lat: 4.0510564,
-            lng: 9.6678687
-        },
-        zoom: 10
-    });
-
-    carte = new Carte(map);
-    list = new List(carte);
-
-    carte.getUserPosition()
+    getUserPosition()
         .then((position) => {
-            carte.currentUserPosition = position;
-            carte.map.setCenter(position);
-            carte.addMarkerUser(position);
 
-            fetch("./restaurant.json").then(resp => {
-                return resp.json();
-            }).then(restaurants => {
-
-                restaurants.forEach((item, index) => {
-                    let restaurant = new Restaurant(item.restaurantName, item.address, {
-                        lat: item.lat,
-                        lng: item.long
-                    }, item.ratings, index)
-
-                    list.addRestaurant(restaurant);
-                    carte.addMarkerRestau(restaurant.position);
-                });
-
-                $('#toast-info').toast('show');
-
-            }).catch(error => {
-                $('#restaurantsList').append(error);
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: position,
+                zoom: 10
             });
 
+            carte = new Carte(map, position);
+            list = new List(carte);
+
+            fetch("./restaurant.json").then(resp => {
+                    return resp.json();
+                }).then(restaurants => {
+
+                    restaurants.forEach((item, index) => {
+                        let restaurant = new Restaurant(item.restaurantName, item.address, {
+                            lat: item.lat,
+                            lng: item.long
+                        }, item.ratings, index)
+
+                        list.addRestaurant(restaurant);
+                        carte.addMarkerRestau(restaurant.position);
+                    });
+
+                }).catch(error => {
+                    $('#restaurantsList').append(error);
+                });
+
+            carte.getRestaurantAround()
+                .then((res) => {
+                    console.log(JSON.parse(JSON.stringify(res)));
+                })
+
+            //Display toast that inform user possibility to add new restaurant 
+            $('#toast-info').toast('show');
             /*Get lat & lng when user click on map*/
+
             google.maps.event.addListener(map, 'contextmenu', function (event) {
 
                 $('#staticBackdropRestau').modal('show');
@@ -139,20 +154,3 @@ $('#AddNewCommentButton').on('click', (event) => {
 $('#userComment').keyup(() => {
     $('#addCommentError').hide();
 })
-
-/*maanger navbar position when windiw is scrolling*/
-/*$(window).scroll(function () {
-    if ($(this).scrollTop() > 40) {
-        $('#navbar_top').addClass("fixed-top");
-    } else {
-        $('#navbar_top').removeClass("fixed-top");
-    }
-});*/
-
-/*
-carte.displayLocalRestaurant();
-carte.displayRestaurantAround()
-    .then((res) => {
-        console.log(res);
-    })
-*/
