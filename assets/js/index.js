@@ -53,7 +53,9 @@ function init() {
 
             cardObject.getRestaurantAround()
                 .then((res) => {
+                    //console.log(res);
                     console.log(JSON.parse(JSON.stringify(res)));
+                    //console.log(JSON.parse(JSON.stringify(res[0].html_attributions)));
                 })
 
             //Display toast that inform user possibility to add new restaurant 

@@ -18,9 +18,9 @@ class Card {
 
     addMarkerRestau(position) {
         let icon = {
-            url: "./assets/icons/marker.png", 
+            url: "./assets/icons/marker.png",
             scaledSize: new google.maps.Size(30, 30),
-            origin: new google.maps.Point(0, 0), 
+            origin: new google.maps.Point(0, 0),
             anchor: new google.maps.Point(0, 0)
         };
 
@@ -44,8 +44,9 @@ class Card {
         return new Promise((resolve, reject) => {
             this.service.nearbySearch({
                 location: this.currentUserPosition,
-                radius: 5000,
-                types: ['restaurant']
+                radius: 10000,
+                types: ['restaurant'],
+                fields: ['reviews']
             }, (res) => {
                 resolve(res);
             });
