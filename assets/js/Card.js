@@ -1,9 +1,9 @@
 class Card {
 
-    constructor(map, currentUserPosition) {
-        this.map = map;
+    constructor(gMap, currentUserPosition) {
+        this.gMap = gMap;
         this.currentUserPosition = currentUserPosition;
-        this.service = new google.maps.places.PlacesService(map);
+        this.service = new google.maps.places.PlacesService(gMap);
         this.restaurants = [];
         this.markers = [];
         this.addMarkerUser();
@@ -12,7 +12,7 @@ class Card {
     addMarkerUser() {
         new google.maps.Marker({
             position: this.currentUserPosition,
-            map: this.map
+            map: this.gMap
         });
     }
 
@@ -26,7 +26,7 @@ class Card {
 
         let maker = new google.maps.Marker({
             position: position,
-            map: this.map,
+            map: this.gMap,
             icon: icon,
         });
 
