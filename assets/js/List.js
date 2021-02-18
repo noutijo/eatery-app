@@ -31,7 +31,5 @@ class List {
                 item.displayResaurant();
             });
         }
-
     }
-
 }

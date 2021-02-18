@@ -17,7 +17,6 @@ class Carte {
     }
 
     addMarkerRestau(position) {
-
         let icon = {
             url: "./assets/icons/marker.png", 
             scaledSize: new google.maps.Size(30, 30),
@@ -42,7 +41,6 @@ class Carte {
     }
 
     getRestaurantAround() {
-
         return new Promise((resolve, reject) => {
             this.service.nearbySearch({
                 location: this.currentUserPosition,
@@ -53,5 +51,4 @@ class Carte {
             });
         })
     }
-
 }

@@ -33,7 +33,7 @@ function init() {
             carte = new Carte(map, position);
             list = new List(carte);
 
-            fetch("./restaurant.json").then(resp => {
+            /*fetch("./restaurant.json").then(resp => {
                     return resp.json();
                 }).then(restaurants => {
 
@@ -49,7 +49,7 @@ function init() {
 
                 }).catch(error => {
                     $('#restaurantsList').append(error);
-                });
+                });*/
 
             carte.getRestaurantAround()
                 .then((res) => {
