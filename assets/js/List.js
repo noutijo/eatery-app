@@ -1,6 +1,6 @@
 class List {
-    constructor(carte) {
-        this.carte = carte;
+    constructor(cardObject) {
+        this.cardObject = cardObject;
         this.allRestaurant = [];
         this.filteredRestaurant = [];
     }
@@ -15,7 +15,7 @@ class List {
             return item.avgRating >= min & item.avgRating <= max;
         })
 
-        this.carte.removeAllMarkerResto();
+        this.cardObject.removeAllMarkerResto();
 
         document.getElementById('restaurantsList').innerHTML = ''
 
@@ -27,7 +27,7 @@ class List {
             });
         } else {
             this.filteredRestaurant.forEach(item => {
-                this.carte.addMarkerRestau(item.position);
+                this.cardObject.addMarkerRestau(item.position);
                 item.displayResaurant();
             });
         }
