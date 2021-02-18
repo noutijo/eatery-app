@@ -34,22 +34,22 @@ function init() {
             list = new List(cardObject);
 
             fetch("./restaurant.json").then(resp => {
-                    return resp.json();
-                }).then(restaurants => {
+                return resp.json();
+            }).then(restaurants => {
 
-                    restaurants.forEach((item, index) => {
-                        let restaurant = new Restaurant(item.restaurantName, item.address, {
-                            lat: item.lat,
-                            lng: item.long
-                        }, item.ratings, index)
+                restaurants.forEach((item, index) => {
+                    let restaurant = new Restaurant(item.restaurantName, item.address, {
+                        lat: item.lat,
+                        lng: item.long
+                    }, item.ratings, index)
 
-                        list.addRestaurant(restaurant);
-                        cardObject.addMarkerRestau(restaurant.position);
-                    });
-
-                }).catch(error => {
-                    $('#restaurantsList').append(error);
+                    list.addRestaurant(restaurant);
+                    cardObject.addMarkerRestau(restaurant.name, restaurant.position);
                 });
+
+            }).catch(error => {
+                $('#restaurantsList').append(error);
+            });
 
             cardObject.getRestaurantAround()
                 .then((res) => {
@@ -93,7 +93,7 @@ $('#AddNewRestaurantButton').on('click', (event) => {
         }, [], list.allRestaurant.length)
 
         list.addRestaurant(restaurant);
-        cardObject.addMarkerRestau(restaurant.position);
+        cardObject.addMarkerRestau($('#restaurantName').val(), restaurant.position);
 
         //clear field and close modal
         document.getElementById('restaurantName').value = '';

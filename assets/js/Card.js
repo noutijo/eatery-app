@@ -16,7 +16,7 @@ class Card {
         });
     }
 
-    addMarkerRestau(position) {
+    addMarkerRestau(name,position) {
         let icon = {
             url: "./assets/icons/marker.png",
             scaledSize: new google.maps.Size(30, 30),
@@ -28,6 +28,7 @@ class Card {
             position: position,
             map: this.gMap,
             icon: icon,
+            title:name
         });
 
         this.markers.push(maker);
