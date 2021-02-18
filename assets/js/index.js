@@ -58,8 +58,8 @@ function init() {
 
             //Display toast that inform user possibility to add new restaurant 
             $('#toast-info').toast('show');
-            /*Get lat & lng when user click on map*/
 
+            /*Get lat & lng when user make right click on the map*/
             google.maps.event.addListener(gMap, 'contextmenu', function (event) {
 
                 $('#staticBackdropRestau').modal('show');
