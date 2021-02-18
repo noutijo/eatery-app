@@ -1,7 +1,7 @@
-let carte;
+let cardObject;
 let list;
 let index;
-let map;
+let gMap;
 let clickPosition;
 
 /*Get current user position*/
@@ -25,13 +25,13 @@ function init() {
     getUserPosition()
         .then((position) => {
 
-            map = new google.maps.Map(document.getElementById("map"), {
+            gMap = new google.maps.Map(document.getElementById("map"), {
                 center: position,
                 zoom: 10
             });
 
-            carte = new Carte(map, position);
-            list = new List(carte);
+            cardObject = new Card(gMap, position);
+            list = new List(cardObject);
 
             fetch("./restaurant.json").then(resp => {
                     return resp.json();
@@ -44,14 +44,14 @@ function init() {
                         }, item.ratings, index)
 
                         list.addRestaurant(restaurant);
-                        carte.addMarkerRestau(restaurant.position);
+                        cardObject.addMarkerRestau(restaurant.position);
                     });
 
                 }).catch(error => {
                     $('#restaurantsList').append(error);
                 });
 
-            carte.getRestaurantAround()
+            cardObject.getRestaurantAround()
                 .then((res) => {
                     console.log(JSON.parse(JSON.stringify(res)));
                 })
@@ -60,7 +60,7 @@ function init() {
             $('#toast-info').toast('show');
             /*Get lat & lng when user click on map*/
 
-            google.maps.event.addListener(map, 'contextmenu', function (event) {
+            google.maps.event.addListener(gMap, 'contextmenu', function (event) {
 
                 $('#staticBackdropRestau').modal('show');
 
@@ -91,7 +91,7 @@ $('#AddNewRestaurantButton').on('click', (event) => {
         }, [], list.allRestaurant.length)
 
         list.addRestaurant(restaurant);
-        carte.addMarkerRestau(restaurant.position);
+        cardObject.addMarkerRestau(restaurant.position);
 
         //clear field and close modal
         document.getElementById('restaurantName').value = '';

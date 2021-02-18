@@ -1,4 +1,4 @@
-class Carte {
+class Card {
 
     constructor(map, currentUserPosition) {
         this.map = map;
