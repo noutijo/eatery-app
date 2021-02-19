@@ -27,36 +27,50 @@ function init() {
 
             gMap = new google.maps.Map(document.getElementById("map"), {
                 center: position,
-                zoom: 10
+                zoom: 13
             });
 
             cardObject = new Card(gMap, position);
             list = new List(cardObject);
 
-            fetch("./restaurant.json").then(resp => {
-                return resp.json();
-            }).then(restaurants => {
+            /*  fetch("./restaurant.json").then(resp => {
+                 return resp.json();
+             }).then(restaurants => {
 
-                restaurants.forEach((item, index) => {
-                    let restaurant = new Restaurant(item.restaurantName, item.address, {
-                        lat: item.lat,
-                        lng: item.long
-                    }, item.ratings, index)
+                 restaurants.forEach((item, index) => {
+                     let restaurant = new Restaurant(item.restaurantName, item.address, {
+                         lat: item.lat,
+                         lng: item.long
+                     }, item.ratings, index)
 
-                    list.addRestaurant(restaurant);
-                    cardObject.addMarkerRestau(restaurant.name, restaurant.position);
-                });
+                     console.log(restaurant)
+                    // list.addRestaurant(restaurant);
+                     //cardObject.addMarkerRestau(restaurant.name, restaurant.position);
+                 });
 
-            }).catch(error => {
-                $('#restaurantsList').append(error);
-            });
+             }).catch(error => {
+                 $('#restaurantsList').append(error);
+             }); */
 
             cardObject.getRestaurantAround()
                 .then((res) => {
-                    //console.log(res);
-                    console.log(JSON.parse(JSON.stringify(res)));
+                    //console.log(JSON.parse(JSON.stringify(res)));
+                    let restaurants = JSON.parse(JSON.stringify(res));
+
+                    for (let index = 0; index < restaurants.length; index++) {
+                        let ratings = cardObject.getPlaceDetails(restaurants[index].place_id);
+                        let restau = new Restaurant(restaurants[index].name, restaurants[index].vicinity, restaurants[index].geometry.location, ratings, index)
+
+                        console.log(restau.ratings)
+                        list.addRestaurant(restau);
+                        cardObject.addMarkerRestau(restau.name, restau.position);
+                    }
+
+                    //console.log(cardObject.getPlaceDetails(JSON.parse(JSON.stringify(res))[0].place_id));
                     //console.log(JSON.parse(JSON.stringify(res[0].html_attributions)));
-                })
+                }).catch(error => {
+                    $('#restaurantsList').append(error);
+                });
 
             //Display toast that inform user possibility to add new restaurant 
             $('#toast-info').toast('show');
