@@ -44,8 +44,8 @@ function init() {
                      }, item.ratings, index)
 
                      console.log(restaurant)
-                    // list.addRestaurant(restaurant);
-                     //cardObject.addMarkerRestau(restaurant.name, restaurant.position);
+                     list.addRestaurant(restaurant);
+                     cardObject.addMarkerRestau(restaurant.name, restaurant.position);
                  });
 
              }).catch(error => {
@@ -54,20 +54,21 @@ function init() {
 
             cardObject.getRestaurantAround()
                 .then((res) => {
-                    //console.log(JSON.parse(JSON.stringify(res)));
+
                     let restaurants = JSON.parse(JSON.stringify(res));
 
                     for (let index = 0; index < restaurants.length; index++) {
-                        let ratings = cardObject.getPlaceDetails(restaurants[index].place_id);
-                        let restau = new Restaurant(restaurants[index].name, restaurants[index].vicinity, restaurants[index].geometry.location, ratings, index)
+                        
+                        cardObject.getPlaceDetails(restaurants[index].place_id, (res) => {
+                            
+                            let restau = new Restaurant(restaurants[index].name, restaurants[index].vicinity, restaurants[index].geometry.location, res, index)
+    
+                            list.addRestaurant(restau);
+                            cardObject.addMarkerRestau(restau.name, restau.position);
 
-                        console.log(restau.ratings)
-                        list.addRestaurant(restau);
-                        cardObject.addMarkerRestau(restau.name, restau.position);
+                        });
                     }
 
-                    //console.log(cardObject.getPlaceDetails(JSON.parse(JSON.stringify(res))[0].place_id));
-                    //console.log(JSON.parse(JSON.stringify(res[0].html_attributions)));
                 }).catch(error => {
                     $('#restaurantsList').append(error);
                 });

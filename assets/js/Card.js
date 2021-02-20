@@ -48,38 +48,38 @@ class Card {
             this.service.nearbySearch({
                 location: this.currentUserPosition,
                 radius: 5000,
-                types: ['restaurant'],
-                fields: ['name', 'formatted_address', 'formatted_phone_number', 'rating', 'user_ratings_total', 'reviews', 'photo', 'place_id', 'geometry']
+                types: ['restaurant']
             }, (res) => {
                 resolve(res);
             });
         })
     }
 
-    getPlaceDetails(place_id) {
-
-        let that = this;
+    getPlaceDetails(place_id, callback) {
 
         let placesInfo = [];
         let ratings = [];
+
         let fields = ['name', 'formatted_address', 'formatted_phone_number', 'rating', 'user_ratings_total', 'reviews', 'photo', 'place_id', 'geometry'];
 
         // Get Places Details=
-        that.service.getDetails({
+        this.service.getDetails({
             placeId: place_id,
             fields
-        }, function (placeInfo, status) {
+        }, (placeInfo, status) => {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
 
                 placesInfo.push(placeInfo);
+                
                 placesInfo[0].reviews.forEach(item => {
                     ratings.push({
                         "stars": item.rating,
                         "comment": item.text
-                    })
+                    });
                 });
+                
+                callback(ratings);
             }
         })
-        return ratings;
     }
 }
