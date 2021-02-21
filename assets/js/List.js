@@ -27,7 +27,7 @@ class List {
             });
         } else {
             this.filteredRestaurant.forEach(item => {
-                this.cardObject.addMarkerRestau(item.position);
+                this.cardObject.addMarkerRestau(item.name,item.position);
                 item.displayResaurant();
             });
         }
