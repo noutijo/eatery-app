@@ -53,9 +53,9 @@ function init() {
              }); */
 
             cardObject.getRestaurantAround()
-                .then((res) => {
+                .then((restau) => {
 
-                    let restaurants = JSON.parse(JSON.stringify(res));
+                    let restaurants = restau;
 
                     for (let index = 0; index < restaurants.length; index++) {
                         
@@ -68,6 +68,7 @@ function init() {
 
                         });
                     }
+                    console.log(list.allRestaurant)
 
                 }).catch(error => {
                     $('#restaurantsList').append(error);
@@ -109,6 +110,8 @@ $('#AddNewRestaurantButton').on('click', (event) => {
 
         list.addRestaurant(restaurant);
         cardObject.addMarkerRestau($('#restaurantName').val(), restaurant.position);
+
+         console.log(list.allRestaurant)
 
         //clear field and close modal
         document.getElementById('restaurantName').value = '';

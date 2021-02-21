@@ -47,7 +47,7 @@ class Card {
         return new Promise((resolve, reject) => {
             this.service.nearbySearch({
                 location: this.currentUserPosition,
-                radius: 5000,
+                radius: 10000,
                 types: ['restaurant']
             }, (res) => {
                 resolve(res);
