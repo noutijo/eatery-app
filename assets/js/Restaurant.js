@@ -1,7 +1,8 @@
 class Restaurant {
 
-    constructor(name, address, position, ratings, index) {
+    constructor(name,urlImage, address, position, ratings, index) {
         this.name = name;
+        this.urlImage = urlImage;
         this.address = address;
         this.position = position;
         this.ratings = ratings;
@@ -13,6 +14,8 @@ class Restaurant {
         $('#restaurantsList').append(`
         
         <div class="col-12 make-shbr mt-3 animate__animated animate__fadeInRight animate__delay-0.5s">
+                <p class="mt-3 mb-3"><img width="50" height="50" src="${this.urlImage}" alt="Restaurant image"
+                class="img-fluid" /></p>
                 <p class="mt-3 mb-3"><strong>${this.name}</strong></p>
                 <p class="my-3">${this.address}</p>
                 <p class="my-3" id="ratings_${this.index}">${this.getRatingStarsBlock().join('')}</p>

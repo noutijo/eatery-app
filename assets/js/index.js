@@ -56,13 +56,14 @@ function init() {
                 .then((restau) => {
 
                     let restaurants = restau;
+                    console.log(restaurants)
 
                     for (let index = 0; index < restaurants.length; index++) {
-                        
+
                         cardObject.getPlaceDetails(restaurants[index].place_id, (res) => {
-                            
-                            let restau = new Restaurant(restaurants[index].name, restaurants[index].vicinity, restaurants[index].geometry.location, res, index)
-    
+
+                            let restau = new Restaurant(restaurants[index].name, restaurants[index].icon, restaurants[index].vicinity, restaurants[index].geometry.location, res, index)
+
                             list.addRestaurant(restau);
                             cardObject.addMarkerRestau(restau.name, restau.position);
 
@@ -103,7 +104,7 @@ $('#AddNewRestaurantButton').on('click', (event) => {
         $('#addRestauError').show();
     } else {
 
-        let restaurant = new Restaurant($('#restaurantName').val(), $('#restaurantAddreess').val(), {
+        let restaurant = new Restaurant($('#restaurantName').val(), "./assets/imgs/icon.jpeg", $('#restaurantAddreess').val(), {
             lat: clickPosition.lat,
             lng: clickPosition.lng
         }, [], list.allRestaurant.length)
@@ -111,7 +112,7 @@ $('#AddNewRestaurantButton').on('click', (event) => {
         list.addRestaurant(restaurant);
         cardObject.addMarkerRestau($('#restaurantName').val(), restaurant.position);
 
-         console.log(list.allRestaurant)
+        console.log(list.allRestaurant)
 
         //clear field and close modal
         document.getElementById('restaurantName').value = '';

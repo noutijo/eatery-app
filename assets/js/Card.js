@@ -70,6 +70,7 @@ class Card {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
 
                 placesInfo.push(placeInfo);
+                console.log(placeInfo);
                 
                 placesInfo[0].reviews.forEach(item => {
                     ratings.push({
