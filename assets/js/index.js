@@ -33,47 +33,25 @@ function init() {
             cardObject = new Card(gMap, position);
             list = new List(cardObject);
 
-            /*  fetch("./restaurant.json").then(resp => {
-                 return resp.json();
-             }).then(restaurants => {
+            fetch("./restaurant.json").then(resp => {
+                return resp.json();
+            }).then(restaurants => {
 
-                 restaurants.forEach((item, index) => {
-                     let restaurant = new Restaurant(item.restaurantName, item.address, {
-                         lat: item.lat,
-                         lng: item.long
-                     }, item.ratings, index)
+                restaurants.forEach((item, index) => {
+                    let restaurant = new Restaurant(item.restaurantName, "./assets/imgs/icon.jpeg", item.address, {
+                        lat: item.lat,
+                        lng: item.long
+                    }, item.ratings, index)
 
-                     console.log(restaurant)
-                     list.addRestaurant(restaurant);
-                     cardObject.addMarkerRestau(restaurant.name, restaurant.position);
-                 });
-
-             }).catch(error => {
-                 $('#restaurantsList').append(error);
-             }); */
-
-            cardObject.getRestaurantAround()
-                .then((restau) => {
-
-                    let restaurants = restau;
-                    console.log(restaurants)
-
-                    for (let index = 0; index < restaurants.length; index++) {
-
-                        cardObject.getPlaceDetails(restaurants[index].place_id, (res) => {
-
-                            let restau = new Restaurant(restaurants[index].name, restaurants[index].icon, restaurants[index].vicinity, restaurants[index].geometry.location, res, index)
-
-                            list.addRestaurant(restau);
-                            cardObject.addMarkerRestau(restau.name, restau.position);
-
-                        });
-                    }
-                    console.log(list.allRestaurant)
-
-                }).catch(error => {
-                    $('#restaurantsList').append(error);
+                    console.log(restaurant)
+                    list.addRestaurant(index, restaurant);
+                    cardObject.addMarkerRestau(restaurant.name, restaurant.position);
                 });
+
+            }).catch(error => {
+                $('#restaurantsList').append(error);
+            });
+
 
             //Display toast that inform user possibility to add new restaurant 
             $('#toast-info').toast('show');
@@ -109,7 +87,7 @@ $('#AddNewRestaurantButton').on('click', (event) => {
             lng: clickPosition.lng
         }, [], list.allRestaurant.length)
 
-        list.addRestaurant(restaurant);
+        list.addRestaurant(list.allRestaurant.length, restaurant);
         cardObject.addMarkerRestau($('#restaurantName').val(), restaurant.position);
 
         console.log(list.allRestaurant)

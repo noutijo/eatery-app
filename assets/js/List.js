@@ -5,8 +5,8 @@ class List {
         this.filteredRestaurant = [];
     }
 
-    addRestaurant(restaurant) {
-        this.allRestaurant.push(restaurant);
+    addRestaurant(index,restaurant) {
+        this.allRestaurant[index]=restaurant;
         restaurant.displayResaurant();
     }
 
