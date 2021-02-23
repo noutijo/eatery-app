@@ -1,4 +1,4 @@
-let cardObject;
+let GMapObject;
 let list;
 let index;
 let gMap;
@@ -23,35 +23,46 @@ function getUserPosition() {
 /*init() function for the map*/
 function init() {
     getUserPosition()
-        .then((position) => {
+        .then((UserPosition) => {
 
             gMap = new google.maps.Map(document.getElementById("map"), {
-                center: position,
+                center: UserPosition,
                 zoom: 13
             });
 
-            cardObject = new Card(gMap, position);
-            list = new List(cardObject);
+            GMapObject = new MapContent(gMap, UserPosition);
+            list = new List(GMapObject);
 
-            cardObject.getRestaurantAround()
-                .then((restau) => {
-
-                    let restaurants = restau;
-                    console.log(restaurants)
+            GMapObject.getRestaurantAround()
+                .then((restaurants) => {
 
                     for (let index = 0; index < restaurants.length; index++) {
 
-                        cardObject.getPlaceDetails(restaurants[index].place_id, (res) => {
+                        GMapObject.getPlaceDetails(restaurants[index].place_id, (res) => {
 
-                            let restau = new Restaurant(restaurants[index].name, restaurants[index].icon, restaurants[index].vicinity, restaurants[index].geometry.location, res, index)
+                            let restau = new Restaurant(restaurants[index].name, restaurants[index].icon, restaurants[index].vicinity, restaurants[index].geometry.location, res, list.allRestaurant.length)
 
-                            list.addRestaurant(index,restau);
-                            cardObject.addMarkerRestau(restau.name, restau.position);
+                            list.addRestaurant(list.allRestaurant.length, restau);
+                            GMapObject.addRestauMaker(restau.name, restau.position);
 
                         });
                     }
-                    console.log(list.allRestaurant)
 
+                    //load local restaurants
+                    return fetch("./restaurant.json").then(resp => {
+                        return resp.json();
+                    })
+
+                }).then(localRestaurants => {
+                    localRestaurants.forEach((item) => {
+                        let restaurant = new Restaurant(item.restaurantName, "./assets/imgs/icon.jpeg", item.address, {
+                            lat: item.lat,
+                            lng: item.long
+                        }, item.ratings, list.allRestaurant.length)
+
+                        list.addRestaurant(list.allRestaurant.length, restaurant);
+                        GMapObject.addRestauMaker(restaurant.name, restaurant.position);
+                    });
                 }).catch(error => {
                     $('#restaurantsList').append(error);
                 });
@@ -90,10 +101,8 @@ $('#AddNewRestaurantButton').on('click', (event) => {
             lng: clickPosition.lng
         }, [], list.allRestaurant.length)
 
-        list.addRestaurant(list.allRestaurant.length,restaurant);
-        cardObject.addMarkerRestau($('#restaurantName').val(), restaurant.position);
-
-        console.log(list.allRestaurant)
+        list.addRestaurant(list.allRestaurant.length, restaurant);
+        GMapObject.addRestauMaker($('#restaurantName').val(), restaurant.position);
 
         //clear field and close modal
         document.getElementById('restaurantName').value = '';
@@ -123,6 +132,7 @@ let sortRestaurent = () => {
         alert('Check your rating interval.');
     }
 }
+
 /*Check if interval is right*/
 let isMinRateLessThanMaxRate = (minRate, maxRate) => {
     return (minRate <= maxRate);

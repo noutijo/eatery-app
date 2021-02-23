@@ -1,23 +1,22 @@
-class Card {
+class MapContent {
 
-    constructor(gMap, currentUserPosition) {
+    constructor(gMap, UserPosition) {
         this.gMap = gMap;
-        this.currentUserPosition = currentUserPosition;
+        this.UserPosition = UserPosition;
         this.service = new google.maps.places.PlacesService(gMap);
-        // this.service = new google.maps.places.PlacesService(gMap);
         this.restaurants = [];
         this.markers = [];
-        this.addMarkerUser();
+        this.addUserMaker();
     }
 
-    addMarkerUser() {
+    addUserMaker() {
         new google.maps.Marker({
-            position: this.currentUserPosition,
+            position: this.UserPosition,
             map: this.gMap
         });
     }
 
-    addMarkerRestau(name, position) {
+    addRestauMaker(name, position) {
         let icon = {
             url: "./assets/icons/marker.png",
             scaledSize: new google.maps.Size(30, 30),
@@ -35,7 +34,7 @@ class Card {
         this.markers.push(maker);
     }
 
-    removeAllMarkerResto() {
+    removeMarker() {
         for (let index = 0; index < this.markers.length; index++) {
             this.markers[index].setMap(null);
         }
@@ -46,8 +45,8 @@ class Card {
 
         return new Promise((resolve, reject) => {
             this.service.nearbySearch({
-                location: this.currentUserPosition,
-                radius: 10000,
+                location: this.UserPosition,
+                radius: 5000,
                 types: ['restaurant']
             }, (res) => {
                 resolve(res);
@@ -62,7 +61,7 @@ class Card {
 
         let fields = ['name', 'formatted_address', 'formatted_phone_number', 'rating', 'user_ratings_total', 'reviews', 'photo', 'place_id', 'geometry'];
 
-        // Get Places Details=
+        // Get Places Details
         this.service.getDetails({
             placeId: place_id,
             fields
@@ -70,15 +69,14 @@ class Card {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
 
                 placesInfo.push(placeInfo);
-                console.log(placeInfo);
-                
+
                 placesInfo[0].reviews.forEach(item => {
                     ratings.push({
                         "stars": item.rating,
                         "comment": item.text
                     });
                 });
-                
+
                 callback(ratings);
             }
         })

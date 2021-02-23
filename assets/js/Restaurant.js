@@ -1,6 +1,6 @@
 class Restaurant {
 
-    constructor(name,urlImage, address, position, ratings, index) {
+    constructor(name, urlImage, address, position, ratings, index) {
         this.name = name;
         this.urlImage = urlImage;
         this.address = address;
@@ -86,7 +86,6 @@ class Restaurant {
         for (let w = 0; w < (5 - Math.round(this.avgRating)); w++) {
             ratingStars.push(`<span class="fa fa-star"></span>`);
         }
-
         return ratingStars;
     }
 

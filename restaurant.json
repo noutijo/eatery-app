@@ -1,5 +1,4 @@
-[
-   {
+[{
       "restaurantName": "Restaurant Royal",
       "address": "39 Rue des Petites Akwa, 75010 Douala",
       "lat": 4.0410564,
@@ -18,14 +17,14 @@
       "restaurantName": "La Fouchette",
       "address": "4 Rue akwa, 75018 Douala",
       "lat": 4.0510564,
-      "long": 9.6678687,
+      "long": 9.7678687,
       "ratings": [{
             "stars": 5,
             "comment": "Tiny pizzeria next to Sacre Coeur!"
          },
          {
             "stars": 3,
-            "comment": "Meh, it was fine too."
+            "comment": "Meh, it was fine too for me."
          }
       ]
    },
@@ -33,37 +32,37 @@
       "restaurantName": "Tata NICOLE",
       "address": "4 Rue akwa, 75015 Douala",
       "lat": 4.0310564,
-      "long": 9.6678687,
+      "long": 9.6998687,
       "ratings": [{
             "stars": 5,
             "comment": "Great restaurant"
          },
          {
             "stars": 3,
-            "comment": "Meh, it was fine."
+            "comment": "Meh, it was fine for me."
          }
       ]
    },
    {
-      "restaurantName": "Oreol restau",
+      "restaurantName": "nooutidev Eat",
       "address": "4 Rue Akwa Nord, 75015 Douala",
-      "lat": 4.0010554,
-      "long": 9.6278477,
+      "lat": 4.0910554,
+      "long": 9.7278477,
       "ratings": [{
             "stars": 5,
             "comment": "Great restaurant"
          },
          {
             "stars": 2,
-            "comment": "Meh, it was fine."
+            "comment": "No 100ù good.."
          },
          {
-            "stars": 1.5,
-            "comment": "Meh, it was fine."
+            "stars": 1,
+            "comment": "bad restaurant."
          },
          {
             "stars": 4,
-            "comment": "Meh, it was fine."
+            "comment": "Like it !."
          }
       ]
    }
