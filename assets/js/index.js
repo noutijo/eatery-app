@@ -49,11 +49,11 @@ function init() {
                     }
 
                     //load local restaurants
-                    return fetch("./restaurant.json").then(resp => {
+                    /*return fetch("./restaurant.json").then(resp => {
                         return resp.json();
-                    })
+                    })*/
 
-                }).then(localRestaurants => {
+               /* }).then(localRestaurants => {
                     localRestaurants.forEach((item) => {
                         let restaurant = new Restaurant(item.restaurantName, "./assets/imgs/icon.jpeg", item.address, {
                             lat: item.lat,
@@ -62,7 +62,7 @@ function init() {
 
                         list.addRestaurant(list.allRestaurant.length, restaurant);
                         GMapObject.addRestauMaker(restaurant.name, restaurant.position);
-                    });
+                    });*/
                 }).catch(error => {
                     $('#restaurantsList').append(error);
                 });
